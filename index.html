@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Built by Scout</title>
+		<meta name="description" content="Presentation built with Scout - scout.new">
+		<meta name="author" content="Scout">
+
+		<link rel="stylesheet" href="/reset.css">
+		<link rel="stylesheet" href="/dist/reveal.css">
+		<link rel="stylesheet" href="/dist/theme/scout.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="/plugin/highlight/monokai.css">
+
+		<!-- PDF export settings -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '/css/print/pdf.css' : '/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Title Slide -->
+				<section>
+					<div class="scout-badge">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/>
+						</svg>
+						<span>Built with Scout</span>
+					</div>
+					<h1>Welcome to <span class="scout-gradient">Scout</span> Presentations</h1>
+					<p>Beautiful presentations powered by reveal.js</p>
+					<p><small>Press <kbd>Space</kbd> to navigate</small></p>
+				</section>
+
+				<!-- Introduction -->
+				<section>
+					<h2>What is Scout?</h2>
+					<p>Scout is an AI agent platform that helps you build amazing things</p>
+					<ul>
+						<li class="fragment">🚀 Deploy websites and applications</li>
+						<li class="fragment">📊 Create presentations like this one</li>
+						<li class="fragment">🤖 Run autonomous agents with virtual computers</li>
+						<li class="fragment">✨ Let Scout cook while you focus on what matters</li>
+					</ul>
+				</section>
+
+				<!-- Features Section -->
+				<section>
+					<section>
+						<h2>Key Features</h2>
+						<p>Everything you need for modern presentations</p>
+					</section>
+					
+					<section>
+						<h3>Beautiful Themes</h3>
+						<p>Scout theme with carefully crafted typography and colors</p>
+						<pre><code class="language-css">/* Scout Primary Color */
+background: linear-gradient(
+  135deg,
+  #5B5BD6 0%,
+  #7B7BE6 100%
+);</code></pre>
+					</section>
+
+					<section>
+						<h3>Code Highlighting</h3>
+						<p>Syntax highlighting for all major languages</p>
+						<pre><code class="language-javascript">// Deploy your presentation with Scout
+async function deployPresentation() {
+  const result = await scout.deploy({
+    type: 'presentation',
+    theme: 'scout'
+  });
+  
+  console.log('Live at:', result.url);
+}</code></pre>
+					</section>
+
+					<section>
+						<h3>Export to PDF</h3>
+						<p>Print-friendly PDF export built-in</p>
+						<p class="fragment">Just add <code>?print-pdf</code> to the URL</p>
+					</section>
+				</section>
+
+				<!-- Getting Started -->
+				<section>
+					<h2>Getting Started</h2>
+					<ol>
+						<li class="fragment">Edit <code>index.html</code> to add your slides</li>
+						<li class="fragment">Use Markdown for easier content creation</li>
+						<li class="fragment">Deploy instantly with Scout</li>
+					</ol>
+					<div class="fragment" style="margin-top: 2em;">
+						<a href="https://scout.new" class="scout-button">
+							Start Building
+							<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M5 12h14m-6-6 6 6-6 6"/>
+							</svg>
+						</a>
+					</div>
+				</section>
+
+				<!-- Navigation Help -->
+				<section>
+					<h2>Navigation</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Key</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><kbd>→</kbd> <kbd>Space</kbd></td>
+								<td>Next slide</td>
+							</tr>
+							<tr>
+								<td><kbd>←</kbd></td>
+								<td>Previous slide</td>
+							</tr>
+							<tr>
+								<td><kbd>↑</kbd> <kbd>↓</kbd></td>
+								<td>Navigate vertically</td>
+							</tr>
+							<tr>
+								<td><kbd>Esc</kbd></td>
+								<td>Slide overview</td>
+							</tr>
+							<tr>
+								<td><kbd>S</kbd></td>
+								<td>Speaker notes</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<!-- End Slide -->
+				<section>
+					<h1>Thank You!</h1>
+					<p>Built with <span class="scout-gradient">Scout</span></p>
+					<div style="margin-top: 2em;">
+						<a href="https://scout.new" class="scout-button outline">scout.new</a>
+						<a href="https://x.com/scoutdotnew" class="scout-button outline" style="margin-left: 1em;">@scoutdotnew</a>
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<script type="module">
+			import Reveal from '/dist/reveal.esm.js';
+			import RevealMarkdown from '/plugin/markdown/markdown.esm.js';
+			import RevealHighlight from '/plugin/highlight/highlight.esm.js';
+			import RevealNotes from '/plugin/notes/notes.esm.js';
+			import RevealMath from '/plugin/math/math.esm.js';
+			import RevealSearch from '/plugin/search/search.esm.js';
+			import RevealZoom from '/plugin/zoom/zoom.esm.js';
+
+			// Initialize reveal.js
+			window.Reveal = Reveal;
+			
+			Reveal.initialize({
+				hash: true,
+				controls: true,
+				progress: true,
+				center: true,
+				transition: 'slide',
+				
+				// PDF export settings
+				pdfSeparateFragments: false,
+				pdfMaxPagesPerSlide: 1,
+				
+				// Register plugins
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath, RevealSearch, RevealZoom ]
+			});
+		</script>
+	</body>
+</html>
