@@ -21,28 +21,28 @@ This will start a development server at http://localhost:8000 with instant updat
 
 ## Project Configuration
 
-### Package Management
-
-This project uses bun for package management:
-
-- Install dependencies: `bun install`
-- Build project: `bun run build`
-- Start dev server: `bun run dev` (runs on http://localhost:8000 with HMR)
-- Preview production build: `bun run preview`
-
-The project now uses Vite for building, providing fast hot module reloading and modern development experience.
-
 ### Theme Customization
 
 The Scout theme is defined in:
 
 - `css/theme/source/scout.scss` - Custom Scout theme with brand colors and typography
-- Build themes: `npm run build:css`
 
-Scout theme features:
-- Scout brand colors (#5B5BD6 primary)
-- Custom fonts (Inter + Playfair Display)
-- Special CSS classes for Scout branding
+Available themes include:
+
+- **scout** (default) - Clean, modern Scout-branded theme
+- **black** - Dark theme with light text
+- **white** - Light theme with dark text
+- **league** - Brown theme (matching League Gothic font)
+- **sky** - Blue gradient theme
+- **beige** - Beige theme with dark brown text
+- **simple** - Minimal theme
+- **serif** - Serif-based theme
+- **blood** - Dark red theme
+- **night** - Dark blue theme
+- **moon** - Teal theme
+- **solarized** - Solarized color scheme
+- **dracula** - Dracula color scheme
+- **black-contrast** and **white-contrast** - High contrast variants
 
 ### CSS Classes
 
@@ -54,7 +54,6 @@ The Scout theme provides custom CSS classes:
 
 <!-- Scout badge -->
 <div class="scout-badge">
-  <svg>...</svg>
   <span>Built with Scout</span>
 </div>
 
@@ -65,12 +64,13 @@ The Scout theme provides custom CSS classes:
 
 ### Font Configuration
 
-This project uses Google Fonts with:
+This project uses:
 
-- Inter (sans-serif) - for body text
-- Playfair Display (serif) - for headings
+- **Open Runde Sans** (self-hosted) - for body text and UI elements
+- **Playfair Display** (serif) - for headings and emphasis
+- **IBM Plex Mono** (Google Fonts) - for code blocks
 
-Fonts are imported via Google Fonts CDN in the Scout theme. To change fonts, update the imports in `css/theme/source/scout.scss`.
+The Open Runde Sans font family is self-hosted in `/public/fonts/openrunde/` with Regular, Medium, Semibold, and Bold weights. Other fonts are loaded from Google Fonts CDN.
 
 ## Creating Slides
 
@@ -102,9 +102,12 @@ Fonts are imported via Google Fonts CDN in the Scout theme. To change fonts, upd
 ### Features
 
 - **Fragments**: Add `class="fragment"` to reveal elements sequentially
-- **Code Highlighting**: Use `<pre><code>` blocks with language classes
+- **Code Highlighting**: Use `<pre><code>` blocks with language classes (powered by highlight.js)
 - **Speaker Notes**: Add notes with `<aside class="notes">`
 - **Markdown Support**: Use `data-markdown` for Markdown-based slides
+- **Auto-animations**: Use `data-auto-animate` for smooth transitions
+- **Backgrounds**: Images, videos, gradients, and colors
+- **Math**: LaTeX expressions with KaTeX support
 
 ### Navigation
 
@@ -116,26 +119,16 @@ Fonts are imported via Google Fonts CDN in the Scout theme. To change fonts, upd
 - **F**: Fullscreen
 - **?**: Show keyboard shortcuts
 
-## PDF Export
-
-To export your presentation as a PDF:
-
-1. Add `?print-pdf` to your presentation URL
-2. Open print dialog (Cmd/Ctrl + P)
-3. Save as PDF
-
-For detailed PDF export instructions, see [PDF_EXPORT_GUIDE.md](PDF_EXPORT_GUIDE.md).
-
 ## Plugins
 
 The following plugins are included and enabled:
 
-- **Markdown**: Write slides in Markdown
-- **Highlight**: Syntax highlighting for code blocks
-- **Math**: LaTeX math expressions (KaTeX/MathJax)
-- **Notes**: Speaker notes view
-- **Search**: Search within slides
-- **Zoom**: Alt+click to zoom
+- **Markdown**: Write slides in Markdown (`RevealMarkdown`)
+- **Highlight**: Syntax highlighting for code blocks (`RevealHighlight`)
+- **Math**: LaTeX math expressions with KaTeX (`RevealMath`)
+- **Notes**: Speaker notes view (`RevealNotes`)
+- **Search**: Search within slides (`RevealSearch`)
+- **Zoom**: Alt+click to zoom (`RevealZoom`)
 
 ## Build and Deploy
 
@@ -145,16 +138,14 @@ Build the presentation:
 bun run build
 ```
 
-This:
-- Compiles SCSS themes to CSS (including the Scout theme)
-- Builds reveal.js core and plugins as ES modules
-- Creates production-ready bundles with legacy browser support
+This creates production-ready files using Vite:
 
-The presentation can be deployed to any static hosting service. All necessary files are in:
-- `index.html` - Your presentation
-- `dist/` - Built CSS and JS
-- `plugin/` - Plugin files
-- `css/print/` - Print styles
+- Compiles SCSS themes to CSS
+- Builds reveal.js core and plugins as ES modules
+- Optimizes assets with legacy browser support
+- Generates source maps for debugging
+
+The presentation can be deployed to any static hosting service. All necessary files are generated in `dist/`.
 
 For development, use `bun run dev` for instant hot module reloading.
 
@@ -163,24 +154,55 @@ For development, use `bun run dev` for instant hot module reloading.
 ```
 reveal-template/
 ├── index.html          # Your presentation
+├── demo.html           # Full-featured demo presentation
+├── public/
+│   ├── images/         # Custom images and media files
+│   │   ├── capy1.png   # Sample image
+│   │   ├── capy2.png   # Sample tiled image
+│   │   ├── welcome.mp4 # Sample video
+│   │   └── twitch.gif  # Sample GIF
+│   ├── fonts/          # Self-hosted fonts
+│   │   └── openrunde/  # Open Runde Sans font family
+│   └── reset.css       # CSS reset
 ├── css/
 │   ├── theme/
 │   │   └── source/
-│   │       └── scout.scss  # Scout theme (editable)
+│   │       ├── scout.scss  # Scout theme (editable)
+│   │       └── *.scss      # Other available themes
 │   └── print/          # PDF export styles
-├── dist/               # Built files (don't edit)
+├── dist/               # Built files (generated)
 │   ├── reveal.css
-│   ├── reveal.js
+│   ├── reveal.esm.js
 │   └── theme/
 │       └── scout.css   # Compiled Scout theme
 ├── plugin/             # reveal.js plugins
+├── vite.config.js      # Vite configuration
 └── package.json        # Dependencies and scripts
 ```
 
-## Tips
+## Adding Media
 
-- Keep slides concise - aim for one main point per slide
-- Use high-contrast colors for better visibility
-- Test your presentation on different screen sizes
-- Practice with speaker notes view (press S)
-- Use fragments to control information flow
+Place your custom images, videos, and other media files in `public/images/` and reference them in your slides:
+
+```html
+<!-- Background image -->
+<section data-background="/images/your-image.png">
+  <!-- Inline image -->
+  <img src="/images/your-image.png" alt="Description" />
+
+  <!-- Background video -->
+  <section data-background-video="/images/your-video.mp4"></section>
+</section>
+```
+
+## PDF Export Guide for Scout Presentations
+
+[Reveal.js guide](https://revealjs.com/pdf-export/)
+
+1. Open your presentation in a browser
+2. Add `?print-pdf` to the URL
+   - Example: `http://localhost:8000/?print-pdf`
+3. Press **Cmd+P** (Mac) or **Ctrl+P** (Windows/Linux)
+4. Save as PDF
+
+Note: For best results, use Chrome or Chromium-based browsers for PDF export.

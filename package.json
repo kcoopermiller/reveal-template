@@ -10,8 +10,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && bun run build:plugins",
-    "build:plugins": "bun run build-plugins.js",
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint js/**/*.js",
     "clean": "rm -rf dist"

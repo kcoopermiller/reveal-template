@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import { fileURLToPath } from 'url';
-import { scssThemesPlugin } from './vite-plugin-scss-themes.js';
+import { buildPlugin } from './build-script.js';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -10,7 +10,7 @@ export default defineConfig({
   base: './',
   
   plugins: [
-    scssThemesPlugin(),
+    buildPlugin(),
   ],
   
   build: {
