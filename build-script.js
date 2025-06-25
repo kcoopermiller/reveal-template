@@ -172,13 +172,8 @@ export function buildPlugin() {
   return {
     name: 'build-script',
     
-    buildStart() {
-      // Ensure dist directories exist
+    async buildStart() {
       mkdirSync(resolve(__dirname, 'dist/theme'), { recursive: true });
-    },
-    
-    async buildEnd() {
-      // Build all components
       await buildScssThemes();
       await buildRevealCore();
       await buildRevealPlugins();

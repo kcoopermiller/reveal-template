@@ -1,5 +1,5 @@
 {
-  "name": "scout-presentation",
+  "name": "presentation-template",
   "version": "1.0.0",
   "description": "Beautiful presentations built with Scout - Powered by reveal.js",
   "homepage": "https://scout.new",
@@ -16,13 +16,12 @@
     "clean": "rm -rf dist"
   },
   "author": {
-    "name": "Scout",
-    "email": "hello@scout.new",
+    "name": "Scrapybara",
     "web": "https://scout.new"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/scrapybara/reveal-template.git"
+    "url": "git://github.com/scrapybara/presentation-template.git"
   },
   "engines": {
     "node": ">=18.0.0"
